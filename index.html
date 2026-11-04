@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DarkModeBuddy - Settings</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Enable class-based dark mode -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+</head>
+
+<body class="min-h-screen bg-slate-100 text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
+
+      <div>
+        <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+          DarkModeBuddy
+        </h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          Manage your display preferences
+        </p>
+      </div>
+
+      <button
+        onclick="toggleTheme()"
+        class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">
+        <span id="themeButton">🌙 Dark Mode</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="mx-auto grid max-w-6xl gap-6 px-5 py-10 md:grid-cols-3">
+
+    <!-- Sidebar -->
+    <aside class="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-900">
+
+      <h2 class="mb-5 text-lg font-bold">Settings</h2>
+
+      <nav class="space-y-3">
+        <a href="#appearance"
+          class="block rounded-lg bg-indigo-50 px-4 py-3 font-medium text-indigo-600 dark:bg-indigo-950 dark:text-indigo-300">
+          🎨 Appearance
+        </a>
+
+        <a href="#display"
+          class="block rounded-lg px-4 py-3 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+          🖥️ Display
+        </a>
+
+        <a href="#about"
+          class="block rounded-lg px-4 py-3 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
+          ℹ️ About
+        </a>
+      </nav>
+
+    </aside>
+
+    <!-- Settings Section -->
+    <section class="space-y-6 md:col-span-2">
+
+      <div id="appearance"
+        class="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-900">
+
+        <h2 class="mb-2 text-xl font-bold">Appearance</h2>
+
+        <p class="mb-6 text-sm text-slate-500 dark:text-slate-400">
+          Customize how DarkModeBuddy looks on your device.
+        </p>
+
+        <!-- Dark Mode Setting -->
+        <div class="flex items-center justify-between gap-4 rounded-xl border border-slate-200 p-5 dark:border-slate-700">
+
+          <div>
+            <h3 class="font-semibold">Dark Mode</h3>
+            <p id="modeDescription"
+              class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+              Switch between light and dark themes.
+            </p>
+          </div>
+
+          <button
+            id="modeSwitch"
+            onclick="toggleTheme()"
+            aria-label="Toggle dark mode"
+            aria-pressed="false"
+            class="relative h-7 w-14 shrink-0 rounded-full bg-slate-300 transition-colors dark:bg-indigo-600">
+
+            <span id="switchCircle"
+              class="absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition-transform">
+            </span>
+
+          </button>
+
+        </div>
+
+        <!-- Theme Preview -->
+        <div class="mt-6">
+          <h3 class="mb-3 font-semibold">Theme Preview</h3>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-800">
+              <div class="mb-3 flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-green-500"></span>
+                <span class="text-sm font-medium">Light Theme</span>
+              </div>
+
+              <div class="rounded-lg bg-white p-4 text-slate-800 shadow-sm">
+                <h4 class="font-bold">Welcome!</h4>
+                <p class="mt-2 text-sm text-slate-500">
+                  This is a light theme preview.
+                </p>
+                <button class="mt-3 rounded-md bg-indigo-600 px-3 py-2 text-xs text-white">
+                  Preview
+                </button>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-slate-700 bg-slate-900 p-5 text-white">
+              <div class="mb-3 flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-indigo-400"></span>
+                <span class="text-sm font-medium">Dark Theme</span>
+              </div>
+
+              <div class="rounded-lg bg-slate-800 p-4">
+                <h4 class="font-bold">Welcome!</h4>
+                <p class="mt-2 text-sm text-slate-400">
+                  This is a dark theme preview.
+                </p>
+                <button class="mt-3 rounded-md bg-indigo-500 px-3 py-2 text-xs text-white">
+                  Preview
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Display Settings -->
+      <div id="display"
+        class="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-900">
+
+        <h2 class="mb-2 text-xl font-bold">Display Preferences</h2>
+
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          Your interface automatically adjusts to different screen sizes.
+        </p>
+
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+
+          <div class="rounded-xl bg-indigo-50 p-4 dark:bg-slate-800">
+            <h3 class="font-semibold text-indigo-700 dark:text-indigo-300">
+              Responsive Design
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+              Works on desktop, tablet and mobile devices.
+            </p>
+          </div>
+
+          <div class="rounded-xl bg-indigo-50 p-4 dark:bg-slate-800">
+            <h3 class="font-semibold text-indigo-700 dark:text-indigo-300">
+              Theme Control
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+              Change between light and dark appearance.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- About -->
+      <div id="about"
+        class="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-900">
+
+        <h2 class="text-lg font-bold">About DarkModeBuddy</h2>
+
+        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">
+          A simple interface to demonstrate dark mode implementation
+          and responsive UI using Tailwind CSS.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-5 text-center text-sm text-slate-500 dark:text-slate-400">
+    DarkModeBuddy | Dark Mode & Responsive UI
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+
+      const themeButton = document.getElementById('themeButton');
+      const switchCircle = document.getElementById('switchCircle');
+      const modeSwitch = document.getElementById('modeSwitch');
+      const modeDescription = document.getElementById('modeDescription');
+
+      if (isDark) {
+        themeButton.textContent = '☀️ Light Mode';
+        switchCircle.classList.add('translate-x-7');
+        modeSwitch.setAttribute('aria-pressed', 'true');
+        modeDescription.textContent = 'Dark mode is currently enabled.';
+      } else {
+        themeButton.textContent = '🌙 Dark Mode';
+        switchCircle.classList.remove('translate-x-7');
+        modeSwitch.setAttribute('aria-pressed', 'false');
+        modeDescription.textContent = 'Switch between light and dark themes.';
+      }
+    }
+  </script>
+
+</body>
+</html>
